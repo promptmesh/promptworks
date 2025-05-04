@@ -3,7 +3,7 @@ from lxml.etree import _Element
 
 
 @runtime_checkable
-class BasePromptComponent(Protocol):
+class BasePromptComponent(Protocol): # pragma: no cover
     """
     Interface for a prompt component.
     """
@@ -25,7 +25,7 @@ class BasePromptComponent(Protocol):
         ...
 
 @runtime_checkable
-class AsyncRefreshable(Protocol):
+class AsyncRefreshable(Protocol): # pragma: no cover
     """
     Interface for a component that can be refreshed asynchronously.
     """
@@ -36,9 +36,10 @@ class AsyncRefreshable(Protocol):
 
         This will be called every time the component is rendered, and should be used to fetch the latest data.
         """
+        ...
 
 @runtime_checkable
-class DynamicPromptComponent(BasePromptComponent, AsyncRefreshable, Protocol):
+class DynamicPromptComponent(BasePromptComponent, AsyncRefreshable, Protocol): # pragma: no cover
     """
     Interface for a dynamic prompt component.
     """
