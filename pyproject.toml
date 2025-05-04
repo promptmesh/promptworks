@@ -23,7 +23,9 @@ classifiers = [
     "Topic :: Software Development :: Libraries :: Python Modules",
     "Operating System :: OS Independent"
 ]
-dependencies = []
+dependencies = [
+    "lxml>=5.4.0",
+]
 
 [project.urls]
 Homepage = "https://github.com/SecretiveShell/promptworks"
@@ -37,3 +39,11 @@ promptworks = "promptworks:main"
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+    "lxml-stubs>=0.5.1",
+    "pytest>=8.3.5",
+    "pytest-asyncio>=0.26.0",
+    "pytest-cov>=6.1.1",
+]
