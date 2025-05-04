@@ -1,6 +1,8 @@
+from pathlib import Path
 from typing import List
 import pytest
 from promptworks import interfaces
+from promptworks.components.localfile import LocalFileComponent
 from promptworks.prompt import Prompt
 from promptworks.components.plaintext import PlaintextComponent
 
@@ -72,3 +74,18 @@ def test_prompt_xml() -> None:
     xml_data = prompt.render_as_xml()
     assert isinstance(xml_data, str)
     print(xml_data)
+
+
+@pytest.mark.asyncio
+async def test_prompt_refresh() -> None:
+    components: List[interfaces.BasePromptComponent] = [
+        LocalFileComponent(Path("README.md")),
+    ]
+    prompt = Prompt(components)
+    assert len(prompt) == 1
+
+    await prompt.refresh()
+
+    xml = prompt.render_as_xml()
+    assert "<file" in xml
+    assert "</file>" in xml
