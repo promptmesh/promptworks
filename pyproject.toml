@@ -1,13 +1,35 @@
 [project]
 name = "promptworks"
 version = "0.1.0"
-description = "Add your description here"
+description = "PromptWorks is a structured prompt framework for building composable, testable, and expressive language model pipelines."
 readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
 authors = [
     { name = "TerminalMan", email = "84923604+SecretiveShell@users.noreply.github.com" }
 ]
-requires-python = ">=3.13"
+keywords = ["LLM", "prompt-engineering", "structured-prompts", "framework", "language-models"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Operating System :: OS Independent"
+]
 dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/SecretiveShell/promptworks"
+Repository = "https://github.com/SecretiveShell/promptworks"
+Issues = "https://github.com/SecretiveShell/promptworks/issues"
+Changelog = "https://github.com/SecretiveShell/promptworks/blob/main/CHANGELOG.md"
 
 [project.scripts]
 promptworks = "promptworks:main"
