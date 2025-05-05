@@ -1,4 +1,4 @@
-from typing import TYPE_CHECKING, Any, Protocol, runtime_checkable
+from typing import TYPE_CHECKING, Any, List, Protocol, runtime_checkable
 from lxml.etree import _Element
 
 if TYPE_CHECKING: # pragma: no cover
@@ -60,5 +60,18 @@ class BaseHistoryRenderer(Protocol): # pragma: no cover
         Render the chat history.
 
         This should be used to render the chat history as a string.
+        """
+        ...
+
+
+@runtime_checkable
+class HasChildNodes(Protocol): # pragma: no cover
+    """
+    Interface for a component that has child nodes.
+    """
+
+    def get_child_nodes(self) -> List[BasePromptComponent]:
+        """
+        Get a list of child nodes.
         """
         ...

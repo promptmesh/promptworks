@@ -1,9 +1,9 @@
 from typing import List, Optional
 from promptworks import interfaces
-from promptworks.interfaces import BasePromptComponent
+from promptworks.interfaces import BasePromptComponent, AsyncRefreshable, HasChildNodes
 from lxml.etree import Element, _Element
 
-class ChatHistoryItem(BasePromptComponent):
+class ChatHistoryItem(BasePromptComponent, AsyncRefreshable, HasChildNodes):
     """
     Represents a single chat message in a chat history.
     """
@@ -37,3 +37,6 @@ class ChatHistoryItem(BasePromptComponent):
             "role": self.role,
             "content": [component.as_json() for component in self.components]
         }
+
+    def get_child_nodes(self) -> List[BasePromptComponent]:
+        return self.components.copy()

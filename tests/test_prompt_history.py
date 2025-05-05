@@ -1,6 +1,6 @@
 from email import message
 from promptworks import PromptHistory, TimeComponent, PlaintextComponent
-from promptworks.renderers import XMLRenderer, JSONRenderer
+from promptworks.renderers import XMLRenderer, JSONRenderer, TreeRenderer
 import pytest
 
 
@@ -35,6 +35,10 @@ async def test_prompt_history_render() -> None:
     json = history.render(JSONRenderer(pretty_print=False))
     assert json is not None
     assert isinstance(json, str)
+
+    tree = history.render(TreeRenderer())
+    assert tree is not None
+    assert isinstance(tree, str)
 
 
 @pytest.mark.asyncio
