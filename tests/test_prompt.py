@@ -89,3 +89,19 @@ async def test_prompt_refresh() -> None:
     xml = prompt.render_as_xml()
     assert "<file" in xml
     assert "</file>" in xml
+
+
+
+def test_prompt_get_components() -> None:
+    components: List[interfaces.BasePromptComponent] = [
+        PlaintextComponent("test", "Hello, world!"),
+        PlaintextComponent("test2", "Hello, world!"),
+        PlaintextComponent("test3", "Hello, world!"),
+    ]
+    prompt = Prompt(components)
+    assert len(prompt) == 3
+
+    retrieved_components = prompt.get_components()
+    assert len(retrieved_components) == 3
+    for component in retrieved_components:
+        assert isinstance(component, interfaces.BasePromptComponent)

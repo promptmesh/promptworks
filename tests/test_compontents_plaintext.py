@@ -1,3 +1,4 @@
+import pytest
 from promptworks.components.plaintext import PlaintextComponent
 
 
@@ -14,3 +15,8 @@ def test_plaintext_component():
     assert json["type"] == "plaintext"
     assert json["name"] == "test"
     assert json["text"] == "Hello, world!"
+
+
+def test_invalid_name():
+    with pytest.raises(ValueError):
+        PlaintextComponent("123tag", "Hello, world!")
