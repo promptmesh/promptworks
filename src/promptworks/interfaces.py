@@ -1,5 +1,8 @@
-from typing import Protocol, runtime_checkable
+from typing import TYPE_CHECKING, Any, Protocol, runtime_checkable
 from lxml.etree import _Element
+
+if TYPE_CHECKING: # pragma: no cover
+    from promptworks.prompthistory import PromptHistory
 
 
 @runtime_checkable
@@ -44,3 +47,18 @@ class DynamicPromptComponent(BasePromptComponent, AsyncRefreshable, Protocol): #
     Interface for a dynamic prompt component.
     """
     ...
+
+
+@runtime_checkable
+class BaseHistoryRenderer(Protocol): # pragma: no cover
+    """
+    Interface for a history renderer.
+    """
+
+    def render(self, history: "PromptHistory") -> Any:
+        """
+        Render the chat history.
+
+        This should be used to render the chat history as a string.
+        """
+        ...

@@ -1,9 +1,9 @@
-from typing import Iterable, Optional
+from typing import Iterable, Optional, Sequence
 from promptworks import interfaces
 from lxml import etree
 import json
 
-class Prompt:
+class Prompt():
     _components: list[interfaces.BasePromptComponent]
 
     def __init__(self, components: Optional[list[interfaces.BasePromptComponent]] = None) -> None:
@@ -50,7 +50,7 @@ class Prompt:
         """
         return iter(self._components)
 
-    def get_components(self) -> list[interfaces.BasePromptComponent]:
+    def get_components(self) -> Sequence[interfaces.BasePromptComponent]:
         """
         Get a copy of all components in the prompt.
         """

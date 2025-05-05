@@ -5,6 +5,7 @@ from promptworks.components import (
 )
 
 from promptworks.prompt import Prompt
+from promptworks.prompthistory import PromptHistory
 from promptworks import interfaces
 
 __all__ = [
@@ -13,6 +14,7 @@ __all__ = [
     "PlaintextComponent",
     "Prompt",
     "interfaces",
+    "PromptHistory",
 ]
 
 def main() -> None: # pragma: no cover
