@@ -16,6 +16,9 @@ async def test_plaintext_component():
     with pytest.raises(RuntimeError):
         component.as_json()
 
+    with pytest.raises(RuntimeError):
+        component.as_text()
+
     await component.refresh()
 
     assert component.text == path.read_text(encoding="utf-8")
@@ -31,6 +34,8 @@ async def test_plaintext_component():
     assert json["path"] == str(path.absolute()) # type: ignore
     assert json["mime-type"].startswith("text/") # type: ignore
 
+    text = component.as_text()
+    assert text == f"""<file path="{path}" mime-type="{xml.get("mime-type")}">\n{component.text}\n</file>"""
 
 @pytest.mark.parametrize("path", [
     Path("."),

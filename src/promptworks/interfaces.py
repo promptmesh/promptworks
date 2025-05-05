@@ -19,6 +19,15 @@ class BasePromptComponent(Protocol): # pragma: no cover
         """
         ...
 
+    def as_text(self) -> str:
+        """
+        Convert the component to a text string.
+
+        This should be used to render the component as text, do not fetch data or do computation here.
+        """
+        ...
+
+
     def as_json(self) -> dict:
         """
         Convert the component to a JSON string.

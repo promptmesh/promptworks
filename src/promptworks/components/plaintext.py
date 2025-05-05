@@ -9,6 +9,9 @@ class PlaintextComponent(BasePromptComponent):
         self.name = name
         self.text = text
 
+    def as_text(self) -> str:
+        return self.text
+
     def as_xml(self) -> _Element:
         el = Element(self.name)
         el.text = self.text

@@ -24,6 +24,12 @@ class TimeComponent(BasePromptComponent):
         else:
             self.timestamp = datetime.now(ZoneInfo(self.timezone))
 
+    def as_text(self) -> str:
+        if self.timestamp is None:
+            raise RuntimeError("Component must be refreshed before serialization.")
+
+        return f"Curent time: {self.timestamp.strftime(self._format_string)} in {self.timezone}"
+
     def as_xml(self) -> _Element:
         if self.timestamp is None:
             raise RuntimeError("Component must be refreshed before serialization.")

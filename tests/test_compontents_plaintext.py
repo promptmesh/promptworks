@@ -16,6 +16,9 @@ def test_plaintext_component():
     assert json["name"] == "test"
     assert json["text"] == "Hello, world!"
 
+    text = component.as_text()
+    assert text == "Hello, world!"
+
 
 def test_invalid_name():
     with pytest.raises(ValueError):

@@ -22,6 +22,13 @@ class LocalFileComponent(BasePromptComponent):
     def _get_mime_type(self) -> str:
         mime, _ = mimetypes.guess_type(str(self.path))
         return mime or "text/plain"
+    
+    def as_text(self) -> str:
+        if self.text is None:
+            raise RuntimeError("Component must be refreshed before serialization.")
+        
+        text = f"""<file path="{self.path}" mime-type="{self._get_mime_type()}">\n{self.text}\n</file>"""
+        return text
 
     def as_xml(self) -> _Element:
         if self.text is None:

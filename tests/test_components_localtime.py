@@ -15,6 +15,9 @@ async def test_time_component_localtime():
     with pytest.raises(RuntimeError):
         component.as_json()
 
+    with pytest.raises(RuntimeError):
+        component.as_text()
+
     await component.refresh()
 
     assert component.timestamp is not None
@@ -30,6 +33,9 @@ async def test_time_component_localtime():
     assert json["timestamp"] == component.timestamp.isoformat()
     assert json["format"] == "YYYY-MM-DDTHH:MM:SS±HH:MM"
     assert json["timezone"] == "local"
+
+    text = component.as_text()
+    assert text == f"Curent time: {component.timestamp.strftime('YYYY-MM-DDTHH:MM:SS±HH:MM')} in local"
 
 
 @pytest.mark.asyncio

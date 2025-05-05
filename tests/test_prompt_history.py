@@ -1,8 +1,6 @@
-from email import message
 from promptworks import PromptHistory, TimeComponent, PlaintextComponent
-from promptworks.renderers import XMLRenderer, JSONRenderer, TreeRenderer
+from promptworks.renderers import XMLRenderer, JSONRenderer, TreeRenderer, OpenAIChatRenderer
 import pytest
-
 
 @pytest.mark.asyncio
 async def test_prompt_history_render() -> None:
@@ -39,6 +37,8 @@ async def test_prompt_history_render() -> None:
     tree = history.render(TreeRenderer())
     assert tree is not None
     assert isinstance(tree, str)
+
+    tree = history.render(OpenAIChatRenderer())
 
 
 @pytest.mark.asyncio

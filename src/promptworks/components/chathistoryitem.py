@@ -23,6 +23,15 @@ class ChatHistoryItem(BasePromptComponent, AsyncRefreshable, HasChildNodes):
             if isinstance(component, interfaces.AsyncRefreshable):
                 await component.refresh()
 
+    def as_text(self) -> str:
+        
+        text = ""
+        for component in self.components:
+            text += f"  {component.as_text()}\n\n"
+
+        return text
+        
+
     def as_xml(self) -> _Element:
         el = Element(self.role)
 
