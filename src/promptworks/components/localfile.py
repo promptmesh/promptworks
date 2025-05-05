@@ -40,5 +40,6 @@ class LocalFileComponent(BasePromptComponent):
         return {
             "type": "file",
             "path": str(self.path.absolute()),
-            "mime-type": self._get_mime_type()
+            "mime-type": self._get_mime_type(),
+            "text": self.text
         }
