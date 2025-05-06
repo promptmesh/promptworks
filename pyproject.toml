@@ -25,6 +25,7 @@ classifiers = [
 ]
 dependencies = [
     "lxml>=5.4.0",
+    "pillow>=11.2.1",
 ]
 
 [project.urls]
