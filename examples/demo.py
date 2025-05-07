@@ -1,17 +1,20 @@
-from pathlib import Path
-from promptworks import Prompt, LocalFileComponent, TimeComponent, PlaintextComponent
-import asyncio
+from promptworks import fc, evaluate_component, TreeRenderer, RenderState
+from asyncio import run
 
-async def main():
-    prompt = Prompt()
-    prompt.add_component(LocalFileComponent(Path("README.md")))
-    prompt.add_component(TimeComponent())
-    prompt.add_component(PlaintextComponent("test", "Hello, world!"))
+@fc
+def hello():
+    return "Hello, world!"
 
-    await prompt.refresh()
+@fc
+def love():
+    return "I love ai!"
 
-    print(prompt.render_as_xml())
-    print(f"\n\n{'-'*20}\n\n")
-    print(prompt.render_as_json())
+@fc
+def hello_ai():
+    return (
+        hello(),
+        love()
+    )
 
-asyncio.run(main())
+tree = run(evaluate_component(hello_ai()))
+print(TreeRenderer().render(tree, RenderState()))

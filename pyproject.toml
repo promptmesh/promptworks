@@ -3,7 +3,7 @@ name = "promptworks"
 version = "0.1.0"
 description = "PromptWorks is a structured prompt framework for building composable, testable, and expressive language model pipelines."
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 license = { text = "MIT" }
 authors = [
     { name = "TerminalMan", email = "84923604+SecretiveShell@users.noreply.github.com" }
@@ -25,6 +25,7 @@ classifiers = [
 ]
 dependencies = [
     "lxml>=5.4.0",
+    "pillow>=11.2.1",
 ]
 
 [project.urls]
